@@ -32,3 +32,12 @@ given on stdin. Otherwise whatever it evaluates to will be printed out.
 
 If there is a syntax error in your code, an error report will be printed to
 stderr.
+
+Example program, a church encoded pair:
+
+```
+let pair = \x -> \y -> \f -> f x y in
+let fst = \p -> p (\x -> \y -> x) in
+let snd = \p -> p (\x -> \y -> y) in
+\input -> snd (pair 16.66 input)
+```
